@@ -36,11 +36,7 @@ public class CarRentalTest {
     @Test
     public void reserve() {
 
-        Reservation reservation = carRental.reserve(CarType.LARGE, timePeriod, new Customer("Charles","River Development"));
-
-        assert reservation != null;
-
-        System.out.println(reservation);
+        assert carRental.reserve(CarType.LARGE, timePeriod, new Customer("Charles","River Development")) != null;
     }
 
     @Test

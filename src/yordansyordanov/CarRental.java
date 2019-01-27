@@ -88,8 +88,6 @@ public class CarRental {
         carRental.reserve(CarType.SMALL, timePeriod, customer);
         carRental.reserve(CarType.MEDIUM, timePeriod, customer);
         carRental.reserve(CarType.LARGE, timePeriod, customer);
-        carRental.reserve(CarType.LARGE, timePeriod, customer);
-
 
         carRental.DisplayReservations();
     }
