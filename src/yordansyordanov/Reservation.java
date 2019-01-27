@@ -2,9 +2,9 @@ package yordansyordanov;
 
 public class Reservation {
 
-    Car car;
-    Customer customer;
-    TimePeriod period;
+    private Car car;
+    private Customer customer;
+    private TimePeriod period;
 
     public Reservation(Car car, Customer customer, TimePeriod period) {
         this.car = car;

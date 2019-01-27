@@ -13,9 +13,10 @@ public class CarRentalTest {
     CarRental carRental;
     TimePeriod timePeriod;
 
+
     @Before
     public void setUp() throws Exception {
-        carRental = new CarRental(3,2,1);
+        carRental = new CarRental(3, 2, 1);
         timePeriod = new TimePeriod(new Date(), 3);
     }
 
@@ -29,32 +30,32 @@ public class CarRentalTest {
     @Test
     public void getAvailableCars() {
 
-        assert carRental.getAvailableCars(Car.CarType.LARGE, timePeriod) == 1;
+        assert carRental.getAvailableCars(CarType.LARGE, timePeriod).size() == 1;
     }
 
     @Test
     public void reserve() {
 
-        Reservation reservation = carRental.reserve(Car.CarType.LARGE, timePeriod, new Customer("Charles","River Development"));
-
-        System.out.print(reservation);
+        Reservation reservation = carRental.reserve(CarType.LARGE, timePeriod, new Customer("Charles","River Development"));
 
         assert reservation != null;
+
+        System.out.println(reservation);
     }
 
     @Test
     public void carRentalTest() {
 
-        assert carRental.getAvailableCars(Car.CarType.LARGE, timePeriod) == 1;
+        assert carRental.getAvailableCars(CarType.LARGE, timePeriod).size() == 1;   // before reserve
 
-        carRental.reserve(Car.CarType.LARGE, timePeriod, new Customer("Charles","River"));
+        carRental.reserve(CarType.LARGE, timePeriod, new Customer("Charles","River"));
 
-        assert carRental.getAvailableCars(Car.CarType.LARGE, timePeriod) == 0;
+        assert carRental.getAvailableCars(CarType.LARGE, timePeriod).size() == 0;   // after reserve
 
-        assert carRental.getAvailableCars(Car.CarType.SMALL, timePeriod) == 3;
+        assert carRental.getAvailableCars(CarType.SMALL, timePeriod).size() == 3;   // different car type
 
         TimePeriod period2 = new TimePeriod(DateUtils.addDays(timePeriod.getEnd(), 1), 5);
 
-        assert carRental.getAvailableCars(Car.CarType.LARGE, period2) == 1;
+        assert carRental.getAvailableCars(CarType.LARGE, period2).size() == 1;  // different period
     }
 }
