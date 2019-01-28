@@ -43,6 +43,10 @@ public class Scheduler {
      */
     public synchronized boolean reserve(TimePeriod timePeriod, Car car) {
 
+        if(timePeriod.getStart().after(timePeriod.getEnd())){
+            throw  new RuntimeException("Invalid time period!");
+        }
+
         if(isFree(timePeriod, car)){
             schedule.get(car).add(timePeriod);
             return true;
